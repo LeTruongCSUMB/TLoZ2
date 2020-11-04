@@ -806,7 +806,8 @@ MonoBehaviour:
   swingSpeed: 2.25
   shield: {fileID: 4978073455108594478}
   reflecting: 0
-  shieldTime: 1.5
+  shieldTime: 2.5
+  sTime: 0
   bow: {fileID: 519765489824385516}
   arrow: {fileID: 2411672144123532613, guid: 05d30aea1d4dbdb48bfa98c4c0a78cfa, type: 3}
   shotPos: {fileID: 519765491283349810}
@@ -834,13 +835,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2225889902498215203}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 1.25, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6506411975021230682}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1809610038790705267
 BoxCollider:
   m_ObjectHideFlags: 0

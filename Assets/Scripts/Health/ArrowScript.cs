@@ -16,19 +16,22 @@ public class ArrowScript : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
+        print("Collision with " + collision.gameObject.tag);
         if (collision.gameObject.tag.Equals("Shield"))
         {
+            print("shield");
             if (collision.gameObject.GetComponent<PlayerTools>().reflecting)
             {
+                print("reflecting is true");
                 collision.gameObject.GetComponent<PlayerTools>().ShieldDefense(transform.gameObject);
             }
             Destroy(transform.gameObject);
         }
         else
         {
-            if (collision.gameObject.tag.Equals("Player") || collision.gameObject.GetComponent<EntityHealth>() || collision.gameObject.tag.Equals("Arrow"))
+            if (collision.gameObject.tag.Equals("Player") || collision.gameObject.GetComponent<EntityHealth>()) // || collision.gameObject.tag.Equals("Arrow"))
             {
                 Destroy(transform.gameObject);
             }
