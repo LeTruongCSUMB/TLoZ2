@@ -18,9 +18,13 @@ public class ArrowScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.Equals("Reflectable"))
+        if (collision.gameObject.tag.Equals("Shield"))
         {
-            //reflect back
+            if (collision.gameObject.GetComponent<PlayerTools>().reflecting)
+            {
+                collision.gameObject.GetComponent<PlayerTools>().ShieldDefense(transform.gameObject);
+            }
+            Destroy(transform.gameObject);
         }
         else
         {

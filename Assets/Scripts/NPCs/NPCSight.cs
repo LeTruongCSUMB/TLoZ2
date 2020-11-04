@@ -93,7 +93,6 @@ public class NPCSight : MonoBehaviour
         {
             if (!NPC.transform.GetComponent<EntityHealth>().respawnTime && hasDied)
             {
-                print("Only once");
                 RestartNPC();
             }
         }
@@ -123,11 +122,11 @@ public class NPCSight : MonoBehaviour
 
                 if(Physics.Raycast(transform.position, dirToTarget, dstToTarget, 1))
                 {
-                    print(target.name);
                     if(target.tag.Equals("Player"))
                     {
                         if (NPC.transform.GetComponent<NPCPatrol>() != null)
                         {
+                            NPCHead.localRotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
                             NPC.transform.GetComponent<NPCPatrol>().attacking = true;
                         }
                     }

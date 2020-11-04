@@ -58,10 +58,6 @@ public class TreasureChestScript : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            print("chest is already opened");
-        }
     }
 
     // CHECKS FOR KEY

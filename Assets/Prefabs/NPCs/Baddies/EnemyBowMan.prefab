@@ -1992,6 +1992,10 @@ MonoBehaviour:
   - {fileID: 6466886402141715106, guid: 71cedfeb37fd0804ea0134df8446f767, type: 3}
   - {fileID: 6466886402141715106, guid: 71cedfeb37fd0804ea0134df8446f767, type: 3}
   - {fileID: 6466886402141715106, guid: 8048624d097f243469680a7465299493, type: 3}
+  - {fileID: 6052693357786451417, guid: d99be8a768369f346961fe7d283c741b, type: 3}
+  - {fileID: 6052693357786451417, guid: d99be8a768369f346961fe7d283c741b, type: 3}
+  - {fileID: 6052693357786451417, guid: d99be8a768369f346961fe7d283c741b, type: 3}
+  - {fileID: 6052693357786451417, guid: d99be8a768369f346961fe7d283c741b, type: 3}
   respawns: 1
   timerMax: 15
   respawnTime: 0
@@ -2009,6 +2013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSwordsman: 0
   isBowsman: 1
+  head: {fileID: 0}
   weapon: {fileID: 6670886931715315369}
   rightHand: {fileID: 6670886932080118503}
   arrow: {fileID: 2411672144123532613, guid: 05d30aea1d4dbdb48bfa98c4c0a78cfa, type: 3}
