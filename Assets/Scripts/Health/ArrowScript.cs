@@ -18,7 +18,7 @@ public class ArrowScript : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        print("Collision with " + collision.gameObject.tag);
+        /*print("Collision with " + collision.gameObject.tag);
         if (collision.gameObject.tag.Equals("Shield"))
         {
             print("shield");
@@ -30,7 +30,7 @@ public class ArrowScript : MonoBehaviour
             Destroy(transform.gameObject);
         }
         else
-        {
+        {*/
             if (collision.gameObject.tag.Equals("Player") || collision.gameObject.GetComponent<EntityHealth>()) // || collision.gameObject.tag.Equals("Arrow"))
             {
                 Destroy(transform.gameObject);
@@ -40,6 +40,6 @@ public class ArrowScript : MonoBehaviour
             transform.GetChild(transform.childCount - 1).gameObject.SetActive(false);
             transform.parent = collision.transform.parent;
             Destroy(transform.GetComponent<Rigidbody>());
-        }
+        //}
     }
 }
