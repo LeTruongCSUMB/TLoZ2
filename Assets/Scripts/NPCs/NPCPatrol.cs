@@ -93,8 +93,6 @@ public class NPCPatrol : MonoBehaviour
         }
         else
         {
-
-
             if (checkPoint == patrolPoint2.position)
             {
                 navMeshAgent.SetDestination(patrolPoint1.position);
