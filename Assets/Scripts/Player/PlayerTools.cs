@@ -26,6 +26,7 @@ public class PlayerTools : MonoBehaviour
     public static bool shielding;
     public bool reflecting;
     public float shieldTime;
+    private float sTime = 0.0f;
 
     public GameObject bow;
     public GameObject arrow;
@@ -88,22 +89,23 @@ public class PlayerTools : MonoBehaviour
             {
                 shield.SetActive(true);
                 shielding = true;
-                time += shieldTime * Time.deltaTime;
+                sTime += shieldTime * Time.deltaTime;
 
-                if (time < shieldTime)
+                if (sTime < shieldTime)
                 {
                     reflecting = true;
                 }
-                else if (time > shieldTime)
+                else if (sTime > shieldTime)
                 {
                     reflecting = false;
                 }
+                print("Reflecting = " + reflecting);
             }
         }
         else
         {
             shield.SetActive(false);
-            time = 0.0f;
+            sTime = 0.0f;
             shielding = false;
         }
 
@@ -124,21 +126,9 @@ public class PlayerTools : MonoBehaviour
     // SHIELD
     public void ShieldDefense(GameObject projectile)
     {
-        print("R E F L E C T E D");
+        print("Reflected");
         Rigidbody arrowShot = Instantiate(projectile.GetComponent<Rigidbody>(), refShotPos.position, refShotPos.rotation) as Rigidbody;
         arrowShot.AddForce(refShotPos.forward * 625.0f);
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if(other.tag.Equals("Arrow"))
-        {
-            if(reflecting)
-            {
-                ShieldDefense(other.gameObject);
-            }
-            Destroy(other.gameObject);
-        }
     }
 
     // BOW

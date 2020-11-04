@@ -89,6 +89,12 @@ public class NPCController : MonoBehaviour
                 NPCBowAttack();
             }
         }
+        else
+        {
+            transform.GetComponent<NavMeshAgent>().enabled = true;
+            transform.GetComponent<Rigidbody>().useGravity = true;
+            transform.GetComponent<Rigidbody>().isKinematic = false;
+        }
     }
 
     void NPCSwordAttack()
@@ -107,7 +113,10 @@ public class NPCController : MonoBehaviour
 
     void NPCBowAttack()
     {
-        transform.LookAt(player.transform);
+        Vector3 playerPosition = new Vector3(player.transform.position.x,
+                                             transform.position.y,
+                                             player.transform.position.z);
+        transform.LookAt(playerPosition);
         time += attackSpeed * Time.deltaTime;
 
         if (time > attackSpeed)
