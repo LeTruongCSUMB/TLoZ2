@@ -9,7 +9,7 @@ public class IntroScript : MonoBehaviour
     public float speed;
     public float lerpSpeed;
     private float t0, t1, t2, t3;
-    private bool rot0, rot1, rot2, rot3;
+    public bool rot0, rot1, rot2, rot3;
     // Start is called before the first frame update
     void Start()
     {
