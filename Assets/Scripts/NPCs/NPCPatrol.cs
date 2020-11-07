@@ -31,6 +31,7 @@ public class NPCPatrol : MonoBehaviour
         chased = true;
         HeadToPoint();
         patrolDistance = Vector3.Distance(patrolPoint2.position, patrolPoint1.position);
+        navMeshAgent.updateRotation = false;
 
     }
 
@@ -58,6 +59,14 @@ public class NPCPatrol : MonoBehaviour
         else
         {
             Debug.Log("NPCPatrol: ERROR, NPC is missing EntityHealth Script!");
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (navMeshAgent.velocity.sqrMagnitude > Mathf.Epsilon)
+        {
+            transform.rotation = Quaternion.LookRotation(navMeshAgent.velocity.normalized);
         }
     }
 
@@ -93,8 +102,6 @@ public class NPCPatrol : MonoBehaviour
         }
         else
         {
-
-
             if (checkPoint == patrolPoint2.position)
             {
                 navMeshAgent.SetDestination(patrolPoint1.position);

@@ -8,6 +8,7 @@ public class NPCController : MonoBehaviour
     public bool isSwordsman;
     public bool isBowsman;
 
+    public GameObject head;
     public GameObject weapon;
     public GameObject rightHand;
     public GameObject arrow;
@@ -55,7 +56,17 @@ public class NPCController : MonoBehaviour
                 }
             }
         }
-        CheckDistance();
+        if (isSwordsman || isBowsman)
+        {
+            CheckDistance();
+        }
+        else if (!isSwordsman && !isBowsman && head.GetComponent<NPCSight>() != null)
+        {
+            if (Vector3.Distance(transform.position, player.transform.position) < head.GetComponent<NPCSight>().viewRadius)
+            {
+                head.transform.LookAt(player.transform);
+            }
+        }
     }
 
     public void CheckDistance()
@@ -69,8 +80,20 @@ public class NPCController : MonoBehaviour
 
             if(isBowsman)
             {
+                if (transform.GetComponent<NavMeshAgent>() != null && transform.GetComponent<Rigidbody>() != null)
+                {
+                    transform.GetComponent<NavMeshAgent>().enabled = false;
+                    transform.GetComponent<Rigidbody>().useGravity = false;
+                    transform.GetComponent<Rigidbody>().isKinematic = true;
+                }
                 NPCBowAttack();
             }
+        }
+        else
+        {
+            transform.GetComponent<NavMeshAgent>().enabled = true;
+            transform.GetComponent<Rigidbody>().useGravity = true;
+            transform.GetComponent<Rigidbody>().isKinematic = false;
         }
     }
 
@@ -90,17 +113,14 @@ public class NPCController : MonoBehaviour
 
     void NPCBowAttack()
     {
-        transform.LookAt(player.transform);
+        Vector3 playerPosition = new Vector3(player.transform.position.x,
+                                             transform.position.y,
+                                             player.transform.position.z);
+        transform.LookAt(playerPosition);
         time += attackSpeed * Time.deltaTime;
 
         if (time > attackSpeed)
         {
-            if (transform.GetComponent<NavMeshAgent>() != null && transform.GetComponent<Rigidbody>() != null)
-            {
-                transform.GetComponent<NavMeshAgent>().enabled = false;
-                transform.GetComponent<Rigidbody>().useGravity = false;
-                transform.GetComponent<Rigidbody>().isKinematic = true;
-            }
             time = 0.0f;
             rightHand.SetActive(false);
             weapon.SetActive(true);

@@ -9,6 +9,7 @@ public class TreasureChestScript : MonoBehaviour
     public bool isShieldChest;
     public bool isBowChest;
     public bool spawnItems;
+    public bool isDoor;
 
     public bool needsKey;
     public GameObject itemSlot;
@@ -19,15 +20,18 @@ public class TreasureChestScript : MonoBehaviour
 
     void Update()
     {
-        if(transform.GetChild(1).gameObject.activeSelf)
+        if (!isDoor)
         {
-            if (itemSlot != null)
+            if (transform.GetChild(1).gameObject.activeSelf)
             {
-                itemSlot.transform.localPosition = new Vector3(0.0f, Mathf.Lerp(0.0f, 3.0f, l), 0.0f);
-                l += 0.95f * Time.deltaTime;
-                if (l > 1.0f)
+                if (itemSlot != null)
                 {
-                    itemSlot.transform.localPosition = new Vector3(0.0f, 3.0f, 0.0f);
+                    itemSlot.transform.localPosition = new Vector3(0.0f, Mathf.Lerp(0.0f, 3.0f, l), 0.0f);
+                    l += 0.95f * Time.deltaTime;
+                    if (l > 1.0f)
+                    {
+                        itemSlot.transform.localPosition = new Vector3(0.0f, 3.0f, 0.0f);
+                    }
                 }
             }
         }
@@ -36,31 +40,51 @@ public class TreasureChestScript : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // IF NEEDS KEY, CHECK IF THEY HAVE A KEY
-        if (transform.GetChild(0).gameObject.activeSelf)
+        if (!isDoor)
         {
-            if (other.gameObject.GetComponent<PlayerController>() != null)
+            // IF NEEDS KEY, CHECK IF THEY HAVE A KEY
+            if (transform.GetChild(0).gameObject.activeSelf)
             {
-                GameObject player = other.gameObject;
-
-                if (needsKey)
+                if (other.gameObject.GetComponent<PlayerController>() != null)
                 {
-                    bool canOpen = PlayerHasKey(player);
+                    GameObject player = other.gameObject;
 
-                    if (canOpen)
+                    if (needsKey)
+                    {
+                        bool canOpen = PlayerHasKey(player);
+
+                        if (canOpen)
+                        {
+                            OpenChest(player);
+                        }
+                    }
+                    else
                     {
                         OpenChest(player);
                     }
-                }
-                else
-                {
-                    OpenChest(player);
                 }
             }
         }
         else
         {
-            print("chest is already opened");
+            // IF NEEDS KEY, CHECK IF THEY HAVE A KEY
+            if (transform.GetChild(0).gameObject.activeSelf)
+            {
+                if (other.gameObject.GetComponent<PlayerController>() != null)
+                {
+                    GameObject player = other.gameObject;
+
+                    if (needsKey)
+                    {
+                        bool canOpen = PlayerHasKey(player);
+
+                        if (canOpen)
+                        {
+                            Destroy(transform.gameObject);
+                        }
+                    }
+                }
+            }
         }
     }
 
