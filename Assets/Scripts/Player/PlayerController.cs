@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public static int lupeeCount;
     public static int maxLupeeCount = 999;
 
-    bool moveable = true;    //Flag to control if input can move the player
+    public bool moveable = true;    //Flag to control if input can move the player
     public GameObject currentDisplay = null;
 
     void Update()
