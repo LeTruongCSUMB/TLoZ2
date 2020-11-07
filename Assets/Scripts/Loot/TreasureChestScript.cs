@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TreasureChestScript : MonoBehaviour
 {
-
+    public AudioClip openSFX;
     public bool isSwordChest;
     public bool isShieldChest;
     public bool isBowChest;
@@ -110,6 +110,10 @@ public class TreasureChestScript : MonoBehaviour
     // OPENS CHEST
     void OpenChest(GameObject player)
     {
+        if (transform.GetComponent<AudioSource>() != null && openSFX != null)
+        {
+            transform.GetComponent<AudioSource>().PlayOneShot(openSFX);
+        }
         transform.GetChild(0).gameObject.SetActive(false);
         transform.GetChild(1).gameObject.SetActive(true);
 

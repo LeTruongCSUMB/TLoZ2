@@ -14,6 +14,8 @@ public class PlayerTools : MonoBehaviour
     public bool hasBow;
     public bool getHasBow() { return hasBow;  }
 
+    public List<AudioClip> playerAudio;
+
     public GameObject sword;
     private float startRot = 90.0f;
     private float finalRot = -90.0f;
@@ -59,10 +61,12 @@ public class PlayerTools : MonoBehaviour
 
             if (time > swingSpeed)
             {
+                transform.GetComponent<AudioSource>().PlayOneShot(playerAudio[0]);
                 time = 0.0f;
                 sword.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, startRot);
                 sword.SetActive(false);
                 swinging = false;
+                
             }
         }
 
@@ -138,6 +142,7 @@ public class PlayerTools : MonoBehaviour
         {
             if (Time.time > cooldownRef)
             {
+                transform.GetComponent<AudioSource>().PlayOneShot(playerAudio[1]);
                 cooldownRef = Time.time + cooldown;
                 arrowCount--;
                 Rigidbody arrowShot = Instantiate(arrow.GetComponent<Rigidbody>(), shotPos.position, shotPos.rotation) as Rigidbody;

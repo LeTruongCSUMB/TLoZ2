@@ -6,6 +6,7 @@ public class EntityHealth : MonoBehaviour
 {
     // Start is called before the first frame update
     public int maxEntityHealth;
+    public AudioClip deathSFX;
     public int currentEntityHealth;
     public bool dropsItem;
     public Transform dropTransform;
@@ -14,7 +15,7 @@ public class EntityHealth : MonoBehaviour
     public float timerMax;
     private float timer;
     public bool respawnTime;
-    private bool hasDropped;
+    private bool hasDropped, hasPlayed;
 
     void Start()
     {
@@ -44,6 +45,7 @@ public class EntityHealth : MonoBehaviour
                 NPCSight.hasDied = true;
                 CheckChance();
                 timer = 0.0f;
+                hasPlayed = false;
             }
         }
 
@@ -52,7 +54,15 @@ public class EntityHealth : MonoBehaviour
 
     void OnDeath(bool dropsItems, bool respawns)
     {
-        if(dropsItems)
+        if (transform.GetComponent<AudioSource>() != null && deathSFX != null)
+        {
+            if (!transform.GetComponent<AudioSource>().isPlaying && !hasPlayed)
+            {
+                transform.GetComponent<AudioSource>().PlayOneShot(deathSFX);
+                hasPlayed = true;
+            }
+        }
+        if (dropsItems)
         {
             GameObject drop = RandomizeItemDrop();
             Instantiate(drop, dropTransform);
