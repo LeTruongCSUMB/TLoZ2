@@ -15,11 +15,14 @@ public class PlayerController : MonoBehaviour
     public static int lupeeCount;
     public static int maxLupeeCount = 999;
 
+    bool moveable = true;    //Flag to control if input can move the player
+    public GameObject currentDisplay = null;
+
     void Update()
     {
         //print("Player Health is " + playerHealth);
 
-        if (Input.anyKey)
+        if (Input.anyKey && moveable)
         {
             if (!PlayerTools.swinging)
             {
@@ -27,6 +30,37 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    public void SetMoveableTrue()
+    {
+        moveable = true;
+    }
+
+    public void SetMoveableFalse()
+    {
+        moveable = false;
+    }
+
+    public void SetDisplay(GameObject o)
+    {
+        currentDisplay = o;
+    }
+
+    public string getDisplayName()
+    {
+        return currentDisplay.GetComponent<ItemDisplayInteractScript>().getItemName();
+    }
+
+    public int getDisplayValue()
+    {
+        return currentDisplay.GetComponent<ItemDisplayInteractScript>().getValue();
+    }
+
+    public void purchaseDisplayItem()
+    {
+        currentDisplay.GetComponent<ItemDisplayInteractScript>().purchaseItem();
+    }
+
 
     // MOVES THE PLAYER
     void MovePlayer()
