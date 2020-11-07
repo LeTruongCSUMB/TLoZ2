@@ -1236,6 +1236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxEntityHealth: 3
+  deathSFX: {fileID: 8300000, guid: b015f02def0fcb944a57f8d40898e3c7, type: 3}
   currentEntityHealth: 3
   dropsItem: 1
   dropTransform: {fileID: 2070094534514597680}
@@ -1269,6 +1270,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSwordsman: 1
   isBowsman: 0
+  attackClip: {fileID: 8300000, guid: ae5a6dccce9424543adf15e5108eed22, type: 3}
+  head: {fileID: 0}
   weapon: {fileID: 2070094533762433460}
   rightHand: {fileID: 2070094533196176890}
   arrow: {fileID: 0}
@@ -1277,7 +1280,6 @@ MonoBehaviour:
   attackDistance: 3
   attackSpeed: 3
   swinging: 0
-  firing: 0
 --- !u!114 &2070094534159435875
 MonoBehaviour:
   m_ObjectHideFlags: 0

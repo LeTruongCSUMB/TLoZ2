@@ -8,6 +8,7 @@ public class NPCController : MonoBehaviour
     public bool isSwordsman;
     public bool isBowsman;
 
+    public AudioClip attackClip;
     public GameObject head;
     public GameObject weapon;
     public GameObject rightHand;
@@ -40,6 +41,7 @@ public class NPCController : MonoBehaviour
         {
             if (!rightHand.activeSelf)
             {
+                transform.GetComponent<AudioSource>().PlayOneShot(attackClip);
                 weapon.transform.localRotation = Quaternion.Euler(0.0f, Mathf.Lerp(startRot, finalRot, time), 0.0f);
                 time += attackSpeed * Time.deltaTime;
 
@@ -64,7 +66,7 @@ public class NPCController : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, player.transform.position) < head.GetComponent<NPCSight>().viewRadius)
             {
-                head.transform.LookAt(player.transform);
+                //head.transform.LookAt(player.transform);
             }
         }
     }
@@ -121,6 +123,7 @@ public class NPCController : MonoBehaviour
 
         if (time > attackSpeed)
         {
+            transform.GetComponent<AudioSource>().PlayOneShot(attackClip);
             time = 0.0f;
             rightHand.SetActive(false);
             weapon.SetActive(true);

@@ -8,6 +8,8 @@ public class LootPickUpScript : MonoBehaviour
     public bool isArrow;
     public bool isKey;
 
+    public List<AudioClip> audioClips;
+
     public int quanitity;
     public float timerMax;
 
@@ -17,7 +19,7 @@ public class LootPickUpScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+
     }
 
     // Update is called once per frame
@@ -52,6 +54,7 @@ public class LootPickUpScript : MonoBehaviour
         {
             if (isLupee)
             {
+                other.gameObject.GetComponent<AudioSource>().PlayOneShot(audioClips[0]);
                 if (PlayerController.lupeeCount < PlayerController.maxLupeeCount)
                 {
                     if (PlayerController.lupeeCount + quanitity <= PlayerController.maxLupeeCount)
@@ -69,6 +72,7 @@ public class LootPickUpScript : MonoBehaviour
 
             if(isKey)
             {
+                other.gameObject.GetComponent<AudioSource>().PlayOneShot(audioClips[1]);
                 if (PlayerController.numOfKeys < PlayerController.maxKeyCount)
                 {
                     if (PlayerController.numOfKeys + quanitity <= PlayerController.maxKeyCount)
@@ -90,6 +94,7 @@ public class LootPickUpScript : MonoBehaviour
             GameObject player = other.gameObject;
             if (isArrow)
             {
+                other.gameObject.GetComponent<AudioSource>().PlayOneShot(audioClips[2]);
                 if (PlayerTools.arrowCount < PlayerTools.maxArrowCount)
                 {
                     if (PlayerTools.arrowCount + quanitity <= PlayerTools.maxArrowCount)

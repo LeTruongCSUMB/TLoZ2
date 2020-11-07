@@ -188,6 +188,10 @@ MonoBehaviour:
   isLupee: 0
   isArrow: 1
   isKey: 0
+  audioClips:
+  - {fileID: 8300000, guid: 61794d63811821344a09f66e983d0684, type: 3}
+  - {fileID: 8300000, guid: a0b7710b42b3dae41ab1845cb5560f5f, type: 3}
+  - {fileID: 8300000, guid: bcdec9877e1269040b0367086ecd37de, type: 3}
   quanitity: 5
   timerMax: 6
 --- !u!65 &633875892742383093
