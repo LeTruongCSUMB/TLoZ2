@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Prefabs/NPCs/Friendlies/Audio Dialogue Trigger.prefab.meta
 guid: 2350ac0c2adc1ef4c8778df461d96476
 PrefabImporter:
+=======
+guid: 9fd4913e5c0afd24ea6db1d1ad570a0e
+folderAsset: yes
+DefaultImporter:
+>>>>>>> Stashed changes:Assets/Fungus/Flowcharts.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

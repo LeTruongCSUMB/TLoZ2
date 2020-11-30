@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
 
     public void SetMoveableFalse()
     {
+        Debug.Log("Hey!");
         moveable = false;
     }
 
@@ -61,6 +62,11 @@ public class PlayerController : MonoBehaviour
         currentDisplay.GetComponent<ItemDisplayInteractScript>().purchaseItem();
     }
 
+
+    public int getWallet()
+    {
+        return lupeeCount;
+    }
 
     // MOVES THE PLAYER
     void MovePlayer()
