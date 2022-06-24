@@ -10,7 +10,7 @@ public class DialogueScript : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-
+        Debug.Log(other.tag);
         if (other.tag == "Player")
         {
             if (other.GetComponent<PlayerController>() != null)
